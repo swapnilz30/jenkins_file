@@ -1,3 +1,4 @@
+def build_url=${BUILD_URL}
 pipeline {
    environment {
      fname = "Swapnil"
@@ -7,6 +8,7 @@ pipeline {
      stage('Example') {
        steps {
          echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL} ${fname}"
+         echo "${build_url}"
        }
      }
    }
