@@ -6,6 +6,9 @@ node {
     }
 }
 
+def  fn1() {
+  echo "This is function fn1."
+}
 node {
 
     def build_url = "${env.BUILD_URL}"
