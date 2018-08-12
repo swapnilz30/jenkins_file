@@ -1,8 +1,9 @@
 pipeline {
     agent any
 
-  node('yum-repo-slave') {
+
     stages {
+    node('yum-repo-slave') {
         stage('Build') {
             steps {
                 echo 'Building..'
