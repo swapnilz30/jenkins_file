@@ -1,4 +1,5 @@
-def build_url=${BUILD_URL}
+def build_url=${env.BUILD_URL}
+
 pipeline {
    environment {
      fname = "Swapnil"
