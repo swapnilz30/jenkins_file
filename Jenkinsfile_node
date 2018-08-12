@@ -6,14 +6,15 @@ node {
     }
 }
 
-def  fn1() {
-  echo "This is function fn1."
+def  fn1(build_id, build_url) {
+  echo "${build_id} ${build_url}"
 }
+
 node {
 
     def build_url = "${env.BUILD_URL}"
     stage ('one') {
-       fn1()
+       fn1(${env.BUILD_ID, env.BUILD_URL)
        echo "${build_url}"
     }
 }
