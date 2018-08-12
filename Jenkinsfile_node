@@ -8,6 +8,16 @@ node {
 
 def str_name = 'This is function fn1.'
 def build_id = "$env.BUILD_ID"
+def jenkins_build_path = "/Users/Shared/Jenkins/Home/workspace"
+
+def git_clone(repo_name){
+
+     if [ -d ${jenkins_build_path}/${repo_name}  ]; then
+         rm -rf ${jenkins_build_path}/${repo_name}
+     fi
+     git clone -v git@github.com:swapnilz30/${repo_name}.git jenkins_build_path/${repo_name}
+}
+
 def  fn1(str_name,build_id) {
   echo "$str_name"
   echo "$build_id"
@@ -19,5 +29,10 @@ node {
     stage ('one') {
        fn1(str_name,build_id)
        echo "${build_url}"
+    }
+    stage ('python') {
+      def repo_name = 'python'
+
+      git_clone(repo_name)
     }
 }
