@@ -3,7 +3,6 @@ pipeline {
 
 
     stages {
-    node('yum-repo-slave') {
         stage('Build') {
             steps {
                 echo 'Building..'
@@ -21,5 +20,4 @@ pipeline {
             }
         }
     }
-  }
 }
