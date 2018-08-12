@@ -8,7 +8,7 @@ node {
 
 def str_name = 'This is function fn1.'
 def build_id = "$env.BUILD_ID"
-def jenkins_build_path = "/Users/Shared/Jenkins/Home/workspace"
+def jenkins_build_path = "/Users/swapnil/git-code"
 
 def git_clone(repo_name,jenkins_build_path) {
     echo "jenkins_build_path: ${jenkins_build_path}"
