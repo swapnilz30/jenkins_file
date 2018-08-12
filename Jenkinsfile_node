@@ -7,15 +7,17 @@ node {
 }
 
 def str_name = 'This is function fn1.'
-def  fn1(str_name) {
+def build_id = "$env.BUILD_ID"
+def  fn1(str_name,build_id) {
   echo "$str_name"
+  echo "$build_id"
 }
 
 node {
 
     def build_url = "${env.BUILD_URL}"
     stage ('one') {
-       fn1(str_name)
+       fn1(str_name,build_id)
        echo "${build_url}"
     }
 }
