@@ -6,7 +6,7 @@ node {
     }
 }
 
-def str_name = 'This is function fn1'
+def str_name = 'This is function fn1.'
 def  fn1(str_name) {
   echo "$str_name"
 }
