@@ -12,7 +12,7 @@ def jenkins_build_path = "/Users/Shared/Jenkins/Home/workspace"
 
 def git_clone(repo_name) {
 
-     sh rm -rf "${jenkins_build_path}/${repo_name}"
+     sh "rm -rf ${jenkins_build_path}/${repo_name}"
      sh "git clone -b git@github.com:swapnilz30/${repo_name}.git jenkins_build_path/${repo_name}"
 }
 
