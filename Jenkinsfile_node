@@ -13,6 +13,7 @@ node {
 
     def build_url = "${env.BUILD_URL}"
     stage ('one') {
+       fn1()
        echo "${build_url}"
     }
 }
