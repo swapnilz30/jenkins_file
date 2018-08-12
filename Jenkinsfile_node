@@ -14,7 +14,7 @@ node {
 
     def build_url = "${env.BUILD_URL}"
     stage ('one') {
-       fn1(${env.BUILD_ID}, ${env.BUILD_URL)
+       fn1(${env.BUILD_ID}, ${env.BUILD_URL})
        echo "${build_url}"
     }
 }
