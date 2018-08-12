@@ -18,7 +18,7 @@ def git_clone(repo_name) {
 
 def  fn1(str_name,build_id) {
   echo "$str_name"
-  echo "$build_id" ${jenkins_build_path}
+  echo "$build_id"
 }
 
 node {
