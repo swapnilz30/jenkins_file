@@ -1,11 +1,12 @@
 pipeline {
     agent any
 
+def fname = "Swapnil"
 
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo '${fname} Building..'
 
             }
         }
