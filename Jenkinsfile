@@ -1,10 +1,12 @@
 pipeline {
     agent any
 
+  node('yum-repo-slave') {
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
+
             }
         }
         stage('Test') {
@@ -18,4 +20,5 @@ pipeline {
             }
         }
     }
+  }
 }
