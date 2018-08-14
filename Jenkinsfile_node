@@ -34,7 +34,7 @@ node {
     def build_url = "${env.BUILD_URL}"
     stage ('one') {
        echo "Start if condition"
-       if ( ${params.ansible} == 'true' )
+       if ( "${params.ansible}" == 'true' )
        {
            job_name='ansible'
        }
