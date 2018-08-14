@@ -30,7 +30,7 @@ node {
 
   parameters {
         booleanParam(defaultValue: true, description: '', name: 'ansible')
-
+        booleanParam(defaultValue: true, description: '', name: 'copy_files')
     }
 
     def build_url = "${env.BUILD_URL}"
@@ -39,6 +39,10 @@ node {
        if ( "${params.ansible}" == 'true' )
        {
            job_name='ansible'
+       }
+       elif ( "${params.copy_files}" == 'true' )
+       {
+           job_name='copy_files'
        }
        echo "End if condition"
        fn1(str_name,build_id,job_name)
