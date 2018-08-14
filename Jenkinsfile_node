@@ -21,9 +21,15 @@ def  fn1(str_name,build_id) {
   echo "$build_id"
   def buildNumber = Jenkins.instance.getItem('ansible').lastSuccessfulBuild.number
   echo "ansible: ${buildNumber}"
+
 }
 
 node {
+
+  parameters {
+        booleanParam(defaultValue: true, description: '', name: 'ansible')
+        echo "flag: ${params.ansible}"
+    }
 
     def build_url = "${env.BUILD_URL}"
     stage ('one') {
