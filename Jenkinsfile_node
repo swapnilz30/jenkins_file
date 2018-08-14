@@ -30,9 +30,9 @@ node {
        fn1(str_name,build_id)
        echo "${build_url}"
     }
-    stage ('python') {
+    /*stage ('python') {
       def repo_name = 'python'
 
       git_clone(repo_name,jenkins_build_path)
-    }
+    }*/
 }
