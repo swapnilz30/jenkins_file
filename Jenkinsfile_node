@@ -40,7 +40,7 @@ node {
        {
            job_name='ansible'
        }
-       elif ( "${params.copy_files}" == 'true' )
+       if ( "${params.copy_files}" == 'true' )
        {
            job_name='copy_files'
        }
