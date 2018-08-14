@@ -18,6 +18,7 @@ def git_clone(repo_name,jenkins_build_path) {
 }
 
 def  fn1(str_name,build_id,job_name) {
+  echo "$job_name"
   echo "$str_name"
   echo "$build_id"
   def buildNumber = Jenkins.instance.getItem('${job_name}').lastSuccessfulBuild.number
