@@ -33,10 +33,12 @@ node {
 
     def build_url = "${env.BUILD_URL}"
     stage ('one') {
+       echo "Start if condition"
        if ( ${params.ansible} == 'true' )
        {
            job_name='ansible'
        }
+       echo "End if condition"
        fn1(str_name,build_id,job_name)
        echo "${build_url}"
        echo "flag: ${params.ansible}"
