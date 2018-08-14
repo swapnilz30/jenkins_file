@@ -16,10 +16,10 @@ def git_clone(repo_name,jenkins_build_path) {
      sh "git clone git@github.com:swapnilz30/${repo_name}.git ${jenkins_build_path}/${repo_name}"
 }
 
-def  fn1(str_name,build_id) {
+def  fn1(str_name,build_id,job_name) {
   echo "$str_name"
   echo "$build_id"
-  def buildNumber = Jenkins.instance.getItem('ansible').lastSuccessfulBuild.number
+  def buildNumber = Jenkins.instance.getItem('${job_name}').lastSuccessfulBuild.number
   echo "ansible: ${buildNumber}"
 
 }
@@ -33,7 +33,11 @@ node {
 
     def build_url = "${env.BUILD_URL}"
     stage ('one') {
-       fn1(str_name,build_id)
+       if ( ${params.ansible} = )
+       {
+           job_name='ansible'
+       }
+       fn1(str_name,build_id,job_name)
        echo "${build_url}"
        echo "flag: ${params.ansible}"
     }
