@@ -28,13 +28,14 @@ node {
 
   parameters {
         booleanParam(defaultValue: true, description: '', name: 'ansible')
-        echo "flag: ${params.ansible}"
+
     }
 
     def build_url = "${env.BUILD_URL}"
     stage ('one') {
        fn1(str_name,build_id)
        echo "${build_url}"
+       echo "flag: ${params.ansible}"
     }
     /*stage ('python') {
       def repo_name = 'python'
