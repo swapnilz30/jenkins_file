@@ -19,6 +19,8 @@ def git_clone(repo_name,jenkins_build_path) {
 def  fn1(str_name,build_id) {
   echo "$str_name"
   echo "$build_id"
+  def buildNumber = Jenkins.instance.getItem('ansible').lastSuccessfulBuild.number
+  echo "ansible: ${buildNumber}"
 }
 
 node {
