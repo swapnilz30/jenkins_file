@@ -11,11 +11,6 @@ def checkout_source (repo_name, branch_name){
                                     url: "git@github.com:swapnilz30/${repo_name}.git"]]])
 }
 
-def push_rpm(){
-  sudo cp $rpm_noarch_path/*${master_build_number}*noarch.rpm $repo_path
-  sudo createrepo --update $repo_path
-  sudo chown -R root:apache $repo_path
-}
 
 node ('yum-repo-slave') {
 
