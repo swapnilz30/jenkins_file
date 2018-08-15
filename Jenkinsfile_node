@@ -63,9 +63,9 @@ node {
        echo "${build_url}"
        echo "flag: ${params.ansible}"
     }
-    /*stage ('python') {
+    stage ('python') {
       def repo_name = 'python'
 
       git_clone(repo_name,jenkins_build_path)
-    }*/
+    }
 }
