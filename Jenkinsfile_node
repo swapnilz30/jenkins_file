@@ -21,7 +21,7 @@ node {
 
 def str_name = 'This is function fn1.'
 def build_id = "$env.BUILD_ID"
-def jenkins_build_path = "$src"
+//def jenkins_build_path = "$src"
 def job_name=''
 
 def git_clone(repo_name,branch_name,jenkins_build_path) {
@@ -59,6 +59,7 @@ node ('yum-repo-slave'){
   //branch_name = "refs/heads/"
   workspace = pwd()
   src = "$workspace"
+  jenkins_build_path = "$src"
   cred_id='UnZGVkW9C8hyuvS#!@d!oLdJ5PDYaCRL#YYfaMf$#9&zn4'
   parameters {
         booleanParam(defaultValue: true, description: '', name: 'ansible')
