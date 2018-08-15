@@ -80,7 +80,7 @@ node {
     stage ('python') {
       def repo_name = 'python'
       def branch_name = 'refs/heads/master'
-      checkout_source("${repo_name}","${branch_name}")
-      //git_clone(repo_name,jenkins_build_path)
+      //checkout_source("${repo_name}","${branch_name}")
+      git_clone(repo_name,jenkins_build_path)
     }
 }
