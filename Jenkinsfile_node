@@ -26,6 +26,10 @@ def  fn1(str_name,build_id,job_name) {
      def buildNumber = Jenkins.instance.getItem("${job_name}").lastSuccessfulBuild.number
      echo "ansible: ${buildNumber}"
   }
+  else
+  {
+    echo "Options are not selected."
+  }
 }
 
 node {
