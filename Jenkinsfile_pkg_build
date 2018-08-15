@@ -32,7 +32,9 @@ node ('yum-repo-slave') {
        }
     }
     stage ('push_rpm') {
-      push_repo()
+      //push_repo()
+      sudo cp $rpm_noarch_path/*${master_build_number}*noarch.rpm $repo_path
+      sudo createrepo --update $repo_path
+      sudo chown -R root:apache $repo_path
     }
-
 }
