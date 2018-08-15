@@ -30,6 +30,14 @@ node ('yum-repo-slave') {
          sh "sh -x build.sh -b ${master_build_number}"
        }
     }
+    stage ('print_msg') {
+       branch_name = 'develop'
+       repo_name = 'rpm-build'
+       checkout_source("${repo_name}","${branch_name}")
+       dir("${repo_name}"){
+         sh "sh -x build.sh -b ${master_build_number}"
+       }
+    }
     stage ('push_rpm') {
       push_rpm("${rpm_noarch_path}","${master_build_number}","${repo_path}")
     }
