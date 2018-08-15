@@ -32,7 +32,7 @@ def git_clone(repo_name,branch,jenkins_build_path) {
       sh  "rm -rf ${jenkins_build_path}/${repo_name}"
     }
     sh "git clone -b "${branch}" git@github.com:swapnilz30/${repo_name}.git ${jenkins_build_path}/${repo_name}"
-    if ( $? == 1 )
+    if ( "$?" == 1 )
     {
        echo "The branch ${repo_name} or ${branch} not exist."
     }
