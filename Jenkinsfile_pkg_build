@@ -1,0 +1,26 @@
+import org.jenkinsci.plugins.gitclient.GitClient
+
+def checkout_source (repo_name, branch_name){
+    checkout([$class: 'GitSCM', \
+          branches: [[name: "${branch_name}"]],
+          doGenerateSubmoduleConfigurations: false, \
+            extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${repo_name}"], \
+                         [$class: 'CleanBeforeCheckout']], \
+            submoduleCfg: [], \
+            userRemoteConfigs: [[credentialsId: "${cred_id}", \
+                                    url: "git@github.com:swapnilz30/${repo_name}.git"]]])
+}
+
+node ('yum-repo-slave') {
+
+    cred_id='UnZGVkW9C8hyuvS#!@d!oLdJ5PDYaCRL#YYfaMf$#9&zn4'
+    workspace = pwd()
+    src = "$workspace"
+    master_build_number = "${env.BUILD_NUMBER}"
+    stage ('xen-server-commands') {
+       branch_name = 'develop'
+       repo_name = 'xen-server-commands'
+       checkout_source("${repo_name}","${branch_name}")
+    }
+
+}
