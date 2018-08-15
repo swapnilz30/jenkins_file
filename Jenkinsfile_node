@@ -29,7 +29,7 @@ def git_clone(repo_name,jenkins_build_path) {
     // sh "rm -rf ${jenkins_build_path}/${repo_name}"
     if (fileExists("${jenkins_build_path}/${repo_name}"))
     {
-       rm -rf ${jenkins_build_path}/${repo_name}
+      sh  "rm -rf ${jenkins_build_path}/${repo_name}"
     }
     sh "git clone git@github.com:swapnilz30/${repo_name}.git ${jenkins_build_path}/${repo_name}"
 }
