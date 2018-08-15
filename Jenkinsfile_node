@@ -24,14 +24,18 @@ def build_id = "$env.BUILD_ID"
 def jenkins_build_path = "/Users/Shared/Jenkins/Home/workspace/Pipeline/git-code"
 def job_name=''
 
-def git_clone(repo_name,jenkins_build_path) {
+def git_clone(repo_name,branch,jenkins_build_path) {
     echo "jenkins_build_path: ${jenkins_build_path}"
     // sh "rm -rf ${jenkins_build_path}/${repo_name}"
     if (fileExists("${jenkins_build_path}/${repo_name}"))
     {
       sh  "rm -rf ${jenkins_build_path}/${repo_name}"
     }
-    sh "git clone git@github.com:swapnilz30/${repo_name}.git ${jenkins_build_path}/${repo_name}"
+    sh "git clone -b "${branch}" git@github.com:swapnilz30/${repo_name}.git ${jenkins_build_path}/${repo_name}"
+    if ( $? == 1 )
+    {
+       echo "The branch ${repo_name} or ${branch} not exist."
+    }
 }
 
 def  fn1(str_name,build_id,job_name) {
@@ -56,6 +60,7 @@ node {
         booleanParam(defaultValue: true, description: '', name: 'ansible')
         booleanParam(defaultValue: true, description: '', name: 'copy_files')
         choice(choices: ['python', 'rpm-mysql', 'xen-server-commands', 'rpm-build', 'ansible-code'], description: '', name: 'repositories')
+        choice(choices: ['master', 'develop', 'release/1.0.0', 'release/2.0.0', 'release/2.0.1'], description: '', name: 'branch')
     }
 
     def build_url = "${env.BUILD_URL}"
@@ -86,8 +91,9 @@ node {
       //def repo_name = 'python'
       def repo_name = "${params.repositories}"
       echo "repo_name: ${repo_name}"
-      def branch_name = 'refs/heads/master'
+      //def branch_name = 'refs/heads/master'
+      def branch_name = 'refs/heads/${params.branch}'
       //checkout_source("${repo_name}","${branch_name}")
-      git_clone(repo_name,jenkins_build_path)
+      git_clone(repo_name,branch,jenkins_build_path)
     }
 }
