@@ -24,7 +24,7 @@ def build_id = "$env.BUILD_ID"
 def jenkins_build_path = "/Users/Shared/Jenkins/Home/workspace/Pipeline/git-code"
 def job_name=''
 
-def git_clone(repo_name,branch,jenkins_build_path) {
+def git_clone(repo_name,branch_name,jenkins_build_path) {
     echo "jenkins_build_path: ${jenkins_build_path}"
     // sh "rm -rf ${jenkins_build_path}/${repo_name}"
     if (fileExists("${jenkins_build_path}/${repo_name}"))
