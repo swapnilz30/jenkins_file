@@ -21,7 +21,7 @@ def  fn1(str_name,build_id,job_name) {
   echo "$job_name"
   echo "$str_name"
   echo "$build_id"
-  if ( params.buildNumber != null )
+  if ( params.job_name != null )
   {
      def buildNumber = Jenkins.instance.getItem("${job_name}").lastSuccessfulBuild.number
   }
