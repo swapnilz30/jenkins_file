@@ -55,7 +55,7 @@ def  fn1(str_name,build_id,job_name) {
   }
 }
 
-node {
+node ('yum-repo-slave'){
   //branch_name = "refs/heads/"
   cred_id='UnZGVkW9C8hyuvS#!@d!oLdJ5PDYaCRL#YYfaMf$#9&zn4'
   parameters {
