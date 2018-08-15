@@ -26,10 +26,9 @@ node ('yum-repo-slave') {
          sh "sh -x build.sh -b ${master_build_number}"
        }
     }
-    /*stage ('push_rpm') {
-      //push_repo()
+    stage ('push_rpm') {
       sh "sudo cp $rpm_noarch_path/*${master_build_number}*noarch.rpm $repo_path"
       sh "sudo createrepo --update $repo_path"
       sh "sudo chown -R root:apache $repo_path"
-    }*/
+    }
 }
