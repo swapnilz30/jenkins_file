@@ -47,7 +47,7 @@ def  fn1(str_name,build_id,job_name) {
 
 node {
   //branch_name = "refs/heads/"
-
+  cred_id='UnZGVkW9C8hyuvS#!@d!oLdJ5PDYaCRL#YYfaMf$#9&zn4'
   parameters {
         booleanParam(defaultValue: true, description: '', name: 'ansible')
         booleanParam(defaultValue: true, description: '', name: 'copy_files')
