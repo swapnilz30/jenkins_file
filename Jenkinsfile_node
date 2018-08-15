@@ -24,10 +24,8 @@ def  fn1(str_name,build_id,job_name) {
   if ( params.job_name != null )
   {
      def buildNumber = Jenkins.instance.getItem("${job_name}").lastSuccessfulBuild.number
+     echo "ansible: ${buildNumber}"
   }
-
-  echo "ansible: ${buildNumber}"
-
 }
 
 node {
@@ -44,9 +42,17 @@ node {
        {
            job_name='ansible'
        }
+       else
+       {
+          job_name=''
+       }
        if ( "${params.copy_files}" == 'true' )
        {
            job_name='copy_files'
+       }
+       else
+       {
+          job_name=''
        }
        echo "End if condition"
        fn1(str_name,build_id,job_name)
