@@ -14,7 +14,7 @@ def job_name=''
 def git_clone(repo_name,jenkins_build_path) {
     echo "jenkins_build_path: ${jenkins_build_path}"
     // sh "rm -rf ${jenkins_build_path}/${repo_name}"
-     sh "git clone git@github.com:swapnilz30/${repo_name}.git ${jenkins_build_path}/${repo_name}"
+     sh "git clone git@github.com:swapnilz30/${repo_name}.git ${jenkins_build_path}"
 }
 
 def  fn1(str_name,build_id,job_name) {
