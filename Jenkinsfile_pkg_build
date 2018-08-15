@@ -11,7 +11,11 @@ def checkout_source (repo_name, branch_name){
                                     url: "git@github.com:swapnilz30/${repo_name}.git"]]])
 }
 
-
+def push_rpm(rpm_noarch_path,master_build_number,repo_path){
+   sh "sudo cp $rpm_noarch_path/*${master_build_number}*noarch.rpm $repo_path"
+   sh "sudo createrepo --update $repo_path"
+   sh "sudo chown -R root:apache $repo_path"
+}
 node ('yum-repo-slave') {
 
     cred_id='UnZGVkW9C8hyuvS#!@d!oLdJ5PDYaCRL#YYfaMf$#9&zn4'
@@ -27,8 +31,6 @@ node ('yum-repo-slave') {
        }
     }
     stage ('push_rpm') {
-      sh "sudo cp $rpm_noarch_path/*${master_build_number}*noarch.rpm $repo_path"
-      sh "sudo createrepo --update $repo_path"
-      sh "sudo chown -R root:apache $repo_path"
+      push_rpm("${rpm_noarch_path}","${master_build_number}","${repo_path}")
     }
 }
