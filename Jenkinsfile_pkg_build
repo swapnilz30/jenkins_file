@@ -11,6 +11,12 @@ def checkout_source (repo_name, branch_name){
                                     url: "git@github.com:swapnilz30/${repo_name}.git"]]])
 }
 
+def push_rpm(){
+  sudo cp $rpm_noarch_path/*${master_build_number}*noarch.rpm $repo_path
+  sudo createrepo --update $repo_path
+  sudo chown -R root:apache $repo_path
+}
+
 node ('yum-repo-slave') {
 
     cred_id='UnZGVkW9C8hyuvS#!@d!oLdJ5PDYaCRL#YYfaMf$#9&zn4'
@@ -22,8 +28,11 @@ node ('yum-repo-slave') {
        repo_name = 'xen-server-commands'
        checkout_source("${repo_name}","${branch_name}")
        dir("${repo_name}"){
-         sh "sh build.sh -b ${master_build_number}"
+         sh "sh -x build.sh -b ${master_build_number}"
        }
+    }
+    stage ('push_rpm') {
+      push_repo()
     }
 
 }
