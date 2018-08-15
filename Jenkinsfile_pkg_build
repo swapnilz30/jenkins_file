@@ -21,6 +21,9 @@ node ('yum-repo-slave') {
        branch_name = 'develop'
        repo_name = 'xen-server-commands'
        checkout_source("${repo_name}","${branch_name}")
+       dir('$src/xen-server-commands'){
+         sh "sh build.sh -b ${master_build_number}"
+       }
     }
 
 }
