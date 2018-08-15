@@ -31,6 +31,7 @@ def git_clone(repo_name,branch_name,jenkins_build_path) {
     {
       sh  "rm -rf ${jenkins_build_path}/${repo_name}"
     }
+    echo "branch_name: ${branch_name}"
     sh "git clone -b "${branch_name}" git@github.com:swapnilz30/${repo_name}.git ${jenkins_build_path}/${repo_name}"
     /*if ( "$?" == 1 )
     {
